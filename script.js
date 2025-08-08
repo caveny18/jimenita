@@ -137,3 +137,38 @@ function showToast(message) {
     toast.classList.add('hidden');
   }, 3000);
 }
+function isTooClose(newDate, newTime, existingAppointments) {
+  const newDateTime = new Date(`${newDate}T${newTime}`);
+  
+  for (let appointment of existingAppointments) {
+    const existingDateTime = new Date(`${appointment.date}T${appointment.time}`);
+    const diffMinutes = Math.abs((newDateTime - existingDateTime) / (1000 * 60));
+
+    if (diffMinutes < 60) {
+      return {
+        conflict: true,
+        existing: appointment
+      };
+    }
+  }
+
+  return { conflict: false };
+}
+
+// Dentro del listener de tu formulario:
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const newDate = document.getElementById('date').value;
+  const newTime = document.getElementById('time').value;
+
+  const conflictCheck = isTooClose(newDate, newTime, appointments); // Usa tu array de citas
+
+  if (conflictCheck.conflict) {
+    const shouldChange = confirm(
+      `⚠️ Hay una cita muy cercana ya registrada para las ${conflictCheck.existing.time}. ¿Quieres cambiar la hora?`
+    );
+    if (!shouldChange) return;
+  }
+
+  // Aquí continúa con el registro normal
+});
