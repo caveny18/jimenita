@@ -197,3 +197,30 @@ button[type="submit"]:hover {
 .toast.hidden {
   display: none;
 }
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+
+  header {
+    font-size: 1.3rem;
+    padding: 15px;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .appointment {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  form input,
+  form select,
+  form textarea {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
