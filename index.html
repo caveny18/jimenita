@@ -9,13 +9,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <!-- Tema opcional -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
-<!-- Firebase SDK -->
-<!-- Incluye los SDKs desde el CDN de Firebase -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+<!-- Agrega esto dentro de tu archivo HTML, antes del script.js -->
+<!-- Firebase App (modular v9 compat) -->
+<script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore-compat.js"></script>
 
 <script>
-  // Tu configuración de Firebase
   const firebaseConfig = {
     apiKey: "AIzaSyDPqcugo5r3PmW38sMvL1OIQMj5kayUeSU",
     authDomain: "agendaconsultorio-d6324.firebaseapp.com",
@@ -29,6 +28,7 @@
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 </script>
+
 
 </head>
 <body>
