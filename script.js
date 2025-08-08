@@ -1,7 +1,6 @@
 // script.js con Firebase y opción de cancelar citas compartidas
 
 // Inicializar Firebase (esto ya debe estar en el HTML antes de este script)
-const db = firebase.firestore();
 
 const form = document.getElementById('appointment-form');
 const calendar = document.getElementById('calendar');
