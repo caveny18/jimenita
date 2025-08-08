@@ -7,19 +7,21 @@
 }
 
 body {
-  background-color: #f8f8f8;
+  background: linear-gradient(135deg, #f0f4ff, #e3e9ff);
   color: #333;
   line-height: 1.6;
   padding: 10px;
 }
 
 header {
-  background-color: #0e6fff;
+  background: linear-gradient(to right, #667eea, #764ba2);
   color: white;
   padding: 20px;
   text-align: center;
   font-size: 1.8rem;
   font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .agenda-buttons {
@@ -33,60 +35,52 @@ header {
 .btn {
   padding: 12px 24px;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1rem;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .btn-dra-a {
-  background-color: #e75480;
+  background: linear-gradient(to right, #ff758c, #ff7eb3);
 }
 
 .btn-dra-a:hover {
-  background-color: #d04470;
+  filter: brightness(1.1);
 }
 
 .btn-dra-b {
-  background-color: #7a5ef2;
+  background: linear-gradient(to right, #7a5ef2, #998cff);
 }
 
 .btn-dra-b:hover {
-  background-color: #654be0;
+  filter: brightness(1.1);
 }
 
-#calendar-section {
+#calendar-section,
+#form-section {
   margin: 20px auto;
   max-width: 800px;
-  background: white;
+  background: rgba(255, 255, 255, 0.7);
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 #calendar {
   text-align: center;
   font-size: 1.2rem;
-  color: gray;
+  color: #666;
   padding: 40px 0;
-}
-
-#form-section {
-  margin-top: 30px;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 #form-section h2 {
   margin-bottom: 15px;
   text-align: center;
-  color: #0e6fff;
+  color: #4e54c8;
 }
 
 form {
@@ -98,57 +92,54 @@ form {
 input,
 select,
 textarea {
-  padding: 12px 16px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 12px;
   font-size: 18px;
   width: 100%;
-  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 input[type="date"],
 input[type="time"] {
   min-height: 50px;
   appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   background-color: #fff;
 }
 
 button[type="submit"] {
-  background-color: #0e6fff;
+  background: linear-gradient(to right, #36d1dc, #5b86e5);
   color: white;
-  padding: 12px;
+  padding: 14px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 button[type="submit"]:hover {
-  background-color: #095dcc;
+  filter: brightness(1.1);
 }
 
-/* Estilos para citas */
 .appointment {
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 12px;
+  padding: 14px;
   margin: 10px 0;
   color: white;
   font-size: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* ✅ Clases correctas para las doctoras */
 .doctor-Esquivel {
-  background-color: #f78fb3;
+  background: linear-gradient(to right, #f78fb3, #fcb1d1);
 }
 
 .doctor-Janampa {
-  background-color: #70c1b3;
+  background: linear-gradient(to right, #70c1b3, #a8edea);
 }
 
-/* Responsive */
 @media (max-width: 600px) {
   .agenda-buttons {
     flex-direction: column;
@@ -168,22 +159,23 @@ button[type="submit"]:hover {
 }
 
 #completed-appointments .appointment {
-  background-color: #f0f0f0;
+  background-color: rgba(240, 240, 240, 0.8);
   color: #555;
-  border: 1px dashed #ccc;
+  border-left: 6px dashed #ccc;
   text-decoration: line-through;
-  padding: 12px;
+  padding: 14px;
   margin: 10px 0;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: normal;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 #completed-appointments .doctor-Esquivel {
-  border-left: 5px solid #f78fb3;
+  border-left: 6px solid #f78fb3;
 }
 
 #completed-appointments .doctor-Janampa {
-  border-left: 5px solid #70c1b3;
+  border-left: 6px solid #70c1b3;
 }
 
 .toast {
@@ -191,13 +183,13 @@ button[type="submit"]:hover {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #4caf50;
+  background: linear-gradient(to right, #4caf50, #81c784);
   color: white;
-  padding: 12px 20px;
-  border-radius: 5px;
+  padding: 14px 24px;
+  border-radius: 10px;
   font-weight: bold;
   opacity: 0.95;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   transition: opacity 0.3s ease;
   z-index: 9999;
 }

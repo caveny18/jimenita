@@ -1,24 +1,204 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Reset básico */
+* {
+  box-sizing: border-box;
   margin: 0;
-  background-color: #f5f6fa;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f0f4ff, #e3e9ff);
   color: #333;
+  line-height: 1.6;
+  padding: 10px;
 }
 
 header {
-  background-color: #1976d2;
+  background: linear-gradient(to right, #667eea, #764ba2);
   color: white;
-  padding: 1rem 2rem;
+  padding: 20px;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-main {
-  padding: 1rem 2rem;
+.agenda-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 20px 0;
 }
 
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-dra-a {
+  background: linear-gradient(to right, #ff758c, #ff7eb3);
+}
+
+.btn-dra-a:hover {
+  filter: brightness(1.1);
+}
+
+.btn-dra-b {
+  background: linear-gradient(to right, #7a5ef2, #998cff);
+}
+
+.btn-dra-b:hover {
+  filter: brightness(1.1);
+}
+
+#calendar-section,
+#form-section {
+  margin: 20px auto;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+#calendar {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  padding: 40px 0;
+}
+
+#form-section h2 {
+  margin-bottom: 15px;
+  text-align: center;
+  color: #4e54c8;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input,
+select,
+textarea {
+  padding: 14px 18px;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="date"],
+input[type="time"] {
+  min-height: 50px;
+  appearance: none;
+  background-color: #fff;
+}
+
+button[type="submit"] {
+  background: linear-gradient(to right, #36d1dc, #5b86e5);
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"]:hover {
+  filter: brightness(1.1);
+}
+
+.appointment {
+  border-radius: 12px;
+  padding: 14px;
+  margin: 10px 0;
+  color: white;
+  font-size: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-Esquivel {
+  background: linear-gradient(to right, #f78fb3, #fcb1d1);
+}
+
+.doctor-Janampa {
+  background: linear-gradient(to right, #70c1b3, #a8edea);
+}
+
+@media (max-width: 600px) {
+  .agenda-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #calendar,
+  #form-section {
+    font-size: 1rem;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+#completed-appointments .appointment {
+  background-color: rgba(240, 240, 240, 0.8);
+  color: #555;
+  border-left: 6px dashed #ccc;
+  text-decoration: line-through;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: 12px;
+  font-weight: normal;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+#completed-appointments .doctor-Esquivel {
+  border-left: 6px solid #f78fb3;
+}
+
+#completed-appointments .doctor-Janampa {
+  border-left: 6px solid #70c1b3;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, #4caf50, #81c784);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-weight: bold;
+  opacity: 0.95;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+.toast.hidden {
+  display: none;
+}
+
+/* NUEVO: CSS para vista tipo calendario de días */
 .calendar-container {
   display: flex;
   flex-direction: column;
@@ -26,41 +206,18 @@ main {
 }
 
 .day-section {
-  background-color: white;
-  border-left: 5px solid #1976d2;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.6);
+  border-left: 5px solid #764ba2;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   padding: 1rem 1.5rem;
+  backdrop-filter: blur(8px);
 }
 
 .day-section h2 {
   font-size: 1.2rem;
   margin: 0 0 0.5rem 0;
-  color: #1976d2;
-}
-
-.appointment {
-  border-left: 4px solid #90caf9;
-  padding: 0.5rem 1rem;
-  margin: 0.5rem 0;
-  background-color: #f1f8ff;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-/* Nuevas clases para doctoras */
-.appointment.doctor-Esquivel {
-  border-color: #4caf50;
-  background-color: #e8f5e9;
-}
-
-.appointment.doctor-Janampa {
-  border-color: #ff9800;
-  background-color: #fff3e0;
-}
-
-.appointment strong {
-  color: #333;
+  color: #4e54c8;
 }
 
 .appointment .meta {
@@ -83,21 +240,24 @@ main {
 }
 
 button.done-btn {
-  background-color: #1976d2;
+  background: linear-gradient(to right, #667eea, #764ba2);
   color: white;
   border: none;
-  border-radius: 3px;
-  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
   margin-top: 0.3rem;
   cursor: pointer;
   font-size: 0.8rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 button.done-btn:hover {
-  background-color: #125ca1;
+  filter: brightness(1.1);
 }
 
 .no-appointments {
   font-style: italic;
   color: #777;
+  text-align: center;
+  margin-top: 1rem;
 }
