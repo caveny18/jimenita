@@ -139,11 +139,12 @@ button[type="submit"]:hover {
   font-size: 1rem;
 }
 
-.doctor-a {
+/* ✅ Clases correctas para las doctoras */
+.doctor-Esquivel {
   background-color: #f78fb3;
 }
 
-.doctor-b {
+.doctor-Janampa {
   background-color: #70c1b3;
 }
 
@@ -164,4 +165,31 @@ button[type="submit"]:hover {
   textarea {
     font-size: 16px;
   }
+}
+
+#completed-appointments .appointment {
+  opacity: 0.6;
+  text-decoration: line-through;
+  margin-top: 10px;
+  border: 1px dashed #ccc;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  opacity: 0.95;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+.toast.hidden {
+  display: none;
 }

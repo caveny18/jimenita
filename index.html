@@ -5,56 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agenda del Consultorio</title>
   <link rel="stylesheet" href="styles.css" />
+
   <!-- Flatpickr CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<!-- Tema opcional -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
-<!-- Agrega esto dentro de tu archivo HTML, antes del script.js -->
-<!-- Firebase App (modular v9 compat) -->
-<script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore-compat.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
 
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyDPqcugo5r3PmW38sMvL1OIQMj5kayUeSU",
-    authDomain: "agendaconsultorio-d6324.firebaseapp.com",
-    projectId: "agendaconsultorio-d6324",
-    storageBucket: "agendaconsultorio-d6324.firebasestorage.app",
-    messagingSenderId: "1064951207006",
-    appId: "1:1064951207006:web:32e4cd86e60ace92fe10cf"
-  };
+  <!-- Firebase App (modular v9 compat) -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore-compat.js"></script>
 
-  // Inicializa Firebase
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-</script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDPqcugo5r3PmW38sMvL1OIQMj5kayUeSU",
+      authDomain: "agendaconsultorio-d6324.firebaseapp.com",
+      projectId: "agendaconsultorio-d6324",
+      storageBucket: "agendaconsultorio-d6324.firebasestorage.app",
+      messagingSenderId: "1064951207006",
+      appId: "1:1064951207006:web:32e4cd86e60ace92fe10cf"
+    };
 
-
+    // Inicializa Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
 </head>
 <body>
+
   <header>
     <h1>Agenda del Consultorio</h1>
   </header>
 
   <section class="agenda-buttons">
-    <button class="btn btn-dra-a doctor-toggle" data-doctor="a">Ver citas Dra. A</button>
-    <button class="btn btn-dra-b doctor-toggle" data-doctor="b">Ver citas Dra. B</button>
-     <a href="agenda.html" class="btn" style="background-color: #4caf50;">Ver agenda agrupada</a>
+    <button class="btn btn-dra-a doctor-toggle" data-doctor="Esquivel">Ver citas Dra. Esquivel</button>
+    <button class="btn btn-dra-b doctor-toggle" data-doctor="Janampa">Ver citas Dra. Janampa</button>
+    <button class="btn doctor-toggle" data-doctor="all" style="background-color: #4caf50;">Ver agenda agrupada</button>
   </section>
 
+  <!-- Sección de citas activas -->
   <section id="calendar-section">
     <div id="calendar">
       <!-- Aquí se mostrarán las citas -->
     </div>
   </section>
 
+  <!-- Sección del formulario -->
   <section id="form-section">
     <h2>Registrar nueva cita</h2>
     <form id="appointment-form">
       <label for="doctor">Doctora:</label>
       <select id="doctor" required>
-        <option value="A">Dra. A</option>
-        <option value="B">Dra. B</option>
+        <option value="Esquivel">Dra. Esquivel</option>
+        <option value="Janampa">Dra. Janampa</option>
       </select>
 
       <label for="name">Nombre del paciente:</label>
@@ -73,27 +74,39 @@
     </form>
   </section>
 
+  <!-- Sección de citas realizadas -->
+  <section id="completed-section">
+    <h2 style="text-align: center; margin-top: 30px;">Citas Realizadas</h2>
+    <div id="completed-appointments">
+      <!-- Aquí se mostrarán las citas realizadas -->
+    </div>
+  </section>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden">✔ Cita marcada como realizada</div>
+
+  <!-- Scripts -->
   <script src="script.js"></script>
+
   <!-- Flatpickr JS -->
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<!-- Idioma español -->
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
 
-<script>
-  flatpickr("#date", {
-    locale: "es",
-    altInput: true,
-    altFormat: "d/m/Y",
-    dateFormat: "Y-m-d",
-  });
+  <script>
+    flatpickr("#date", {
+      locale: "es",
+      altInput: true,
+      altFormat: "d/m/Y",
+      dateFormat: "Y-m-d",
+    });
 
-  flatpickr("#time", {
-    enableTime: true,
-    noCalendar: true,
-    dateFormat: "H:i",
-    time_24hr: true
-  });
-</script>
+    flatpickr("#time", {
+      enableTime: true,
+      noCalendar: true,
+      dateFormat: "H:i",
+      time_24hr: true
+    });
+  </script>
 
 </body>
 </html>

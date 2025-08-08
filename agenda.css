@@ -48,12 +48,13 @@ main {
   transition: background-color 0.3s ease;
 }
 
-.appointment.doctor-a {
+/* Nuevas clases para doctoras */
+.appointment.doctor-Esquivel {
   border-color: #4caf50;
   background-color: #e8f5e9;
 }
 
-.appointment.doctor-b {
+.appointment.doctor-Janampa {
   border-color: #ff9800;
   background-color: #fff3e0;
 }
