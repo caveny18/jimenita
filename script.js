@@ -1,5 +1,3 @@
-// script.js con validación de citas cercanas (1 hora), cancelación y Firebase
-
 const form = document.getElementById('appointment-form');
 const calendar = document.getElementById('calendar');
 const completedSection = document.getElementById('completed-appointments');
@@ -36,7 +34,6 @@ form.addEventListener('submit', async function (e) {
     return;
   }
 
-  // Validar citas en el mismo día por proximidad
   const snapshot = await db.collection("appointments").where("date", "==", date).get();
 
   let conflictFound = false;
@@ -56,14 +53,49 @@ form.addEventListener('submit', async function (e) {
   });
 
   if (conflictFound) {
-    const confirmChange = confirm(`⚠️ Ya hay una cita cercana a las ${conflictFound.time} con la Dra. ${conflictFound.doctor} (${conflictFound.patient}). ¿Deseas cambiar la hora?`);
-    if (!confirmChange) return;
-  }
+    const customConfirm = document.createElement('div');
+    customConfirm.style.position = 'fixed';
+    customConfirm.style.top = '0';
+    customConfirm.style.left = '0';
+    customConfirm.style.width = '100%';
+    customConfirm.style.height = '100%';
+    customConfirm.style.backgroundColor = 'rgba(0,0,0,0.5)';
+    customConfirm.style.display = 'flex';
+    customConfirm.style.justifyContent = 'center';
+    customConfirm.style.alignItems = 'center';
+    customConfirm.style.zIndex = '9999';
 
-  const appointment = { doctor, name, date, time, notes, completed: false };
-  await db.collection("appointments").add(appointment);
-  notifyOtherDoctor(doctor);
-  form.reset();
+    customConfirm.innerHTML = `
+      <div style="background: white; padding: 2rem; border-radius: 10px; max-width: 400px; text-align: center; font-family: sans-serif">
+        <p style="margin-bottom: 1rem;">⚠️ Ya hay una cita cercana a las <strong>${conflictFound.time}</strong> con la Dra. <strong>${conflictFound.doctor}</strong> (${conflictFound.patient}).</p>
+        <p style="margin-bottom: 1.5rem;">¿Qué deseas hacer?</p>
+        <button id="change-time" style="background: #ff6f61; color: white; padding: 0.5rem 1rem; border: none; margin-right: 1rem; border-radius: 6px; cursor: pointer;">Cambiar hora</button>
+        <button id="continue-anyway" style="background: #4caf50; color: white; padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer;">Continuar</button>
+      </div>
+    `;
+
+    document.body.appendChild(customConfirm);
+
+    return new Promise(resolve => {
+      document.getElementById('change-time').onclick = () => {
+        document.body.removeChild(customConfirm);
+        resolve(); // No registra la cita
+      };
+      document.getElementById('continue-anyway').onclick = async () => {
+        document.body.removeChild(customConfirm);
+        const appointment = { doctor, name, date, time, notes, completed: false };
+        await db.collection("appointments").add(appointment);
+        notifyOtherDoctor(doctor);
+        form.reset();
+        resolve();
+      };
+    });
+  } else {
+    const appointment = { doctor, name, date, time, notes, completed: false };
+    await db.collection("appointments").add(appointment);
+    notifyOtherDoctor(doctor);
+    form.reset();
+  }
 });
 
 function displayAppointment({ id, doctor, name, date, time, notes }) {
