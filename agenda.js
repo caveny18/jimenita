@@ -1,6 +1,5 @@
 // agenda.js — Mostrar citas agrupadas por día y hora, con bloqueo cruzado y citas realizadas
 
-const db = firebase.firestore();
 const calendarContainer = document.getElementById('calendar-container');
 
 // Función para cargar y mostrar citas organizadas
