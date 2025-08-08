@@ -1,0 +1,102 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background-color: #f5f6fa;
+  color: #333;
+}
+
+header {
+  background-color: #1976d2;
+  color: white;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+main {
+  padding: 1rem 2rem;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.day-section {
+  background-color: white;
+  border-left: 5px solid #1976d2;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 1rem 1.5rem;
+}
+
+.day-section h2 {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem 0;
+  color: #1976d2;
+}
+
+.appointment {
+  border-left: 4px solid #90caf9;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  background-color: #f1f8ff;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.appointment.doctor-a {
+  border-color: #4caf50;
+  background-color: #e8f5e9;
+}
+
+.appointment.doctor-b {
+  border-color: #ff9800;
+  background-color: #fff3e0;
+}
+
+.appointment strong {
+  color: #333;
+}
+
+.appointment .meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.past-appointments {
+  margin-top: 3rem;
+  border-top: 2px dashed #ccc;
+  padding-top: 2rem;
+}
+
+.marked-done {
+  opacity: 0.6;
+  background-color: #d1d1d1 !important;
+  text-decoration: line-through;
+}
+
+button.done-btn {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 0.3rem 0.6rem;
+  margin-top: 0.3rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+button.done-btn:hover {
+  background-color: #125ca1;
+}
+
+.no-appointments {
+  font-style: italic;
+  color: #777;
+}
