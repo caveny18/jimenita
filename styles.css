@@ -168,10 +168,22 @@ button[type="submit"]:hover {
 }
 
 #completed-appointments .appointment {
-  opacity: 0.6;
-  text-decoration: line-through;
-  margin-top: 10px;
+  background-color: #f0f0f0;
+  color: #555;
   border: 1px dashed #ccc;
+  text-decoration: line-through;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  font-weight: normal;
+}
+
+#completed-appointments .doctor-Esquivel {
+  border-left: 5px solid #f78fb3;
+}
+
+#completed-appointments .doctor-Janampa {
+  border-left: 5px solid #70c1b3;
 }
 
 .toast {
