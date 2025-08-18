@@ -8,33 +8,56 @@
 </head>
 <body>
 
-  <h1 style="text-align: center;">Agenda de citas agrupadas</h1>
-  <div id="calendar-container"></div>
+<h1 style="text-align: center;">Agenda de citas</h1>
 
-  <!-- Firebase SDK versión 8.x (clásica, recomendada para uso directo en HTML) -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<div style="text-align: center; margin-bottom: 1rem;">
+  <button class="btn" onclick="changeView('day')">Día</button>
+  <button class="btn" onclick="changeView('week')">Semana</button>
+  <button class="btn" onclick="changeView('month')">Mes</button>
+</div>
 
-  <script>
-    // Configuración Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyDPqcugo5r3PmW38sMvL1OIQMj5kayUeSU",
-      authDomain: "agendaconsultorio-d6324.firebaseapp.com",
-      projectId: "agendaconsultorio-d6324",
-      storageBucket: "agendaconsultorio-d6324.appspot.com",
-      messagingSenderId: "1064951207006",
-      appId: "1:1064951207006:web:32e4cd86e60ace92fe10cf"
-    };
+<div id="calendar-container"></div>
 
-    // Inicializar Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-  </script>
+<!-- Modal para agregar cita -->
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Agregar cita</h3>
+    <form id="modal-form">
+      <input type="hidden" id="modal-date">
+      <label>Nombre del paciente:</label>
+      <input type="text" id="modal-name" required>
+      <label>Doctora:</label>
+      <select id="modal-doctor" required>
+        <option value="Esquivel">Dra. Esquivel</option>
+        <option value="Janampa">Dra. Janampa</option>
+      </select>
+      <label>Hora:</label>
+      <input type="time" id="modal-time" required>
+      <label>Notas:</label>
+      <textarea id="modal-notes" rows="2"></textarea>
+      <button type="submit">Guardar</button>
+      <button type="button" onclick="closeModal()">Cancelar</button>
+    </form>
+  </div>
+</div>
 
-  <!-- Script de la agenda agrupada -->
-  <script src="agenda.js" defer></script>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDPqcugo5r3PmW38sMvL1OIQMj5kayUeSU",
+    authDomain: "agendaconsultorio-d6324.firebaseapp.com",
+    projectId: "agendaconsultorio-d6324",
+    storageBucket: "agendaconsultorio-d6324.appspot.com",
+    messagingSenderId: "1064951207006",
+    appId: "1:1064951207006:web:32e4cd86e60ace92fe10cf"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+<script src="agenda.js" defer></script>
 
 </body>
 </html>
-
 
