@@ -42,8 +42,8 @@
 
 <!-- Sección de calendario -->
 <section id="calendar-section">
-  <div id="calendar">
-    <!-- Aquí se mostrarán las citas -->
+  <div id="calendar-container">
+    <!-- Aquí se mostrará el calendario dinámico -->
   </div>
 </section>
 
@@ -62,11 +62,10 @@
       <option value="">-- Nuevo paciente --</option>
     </select>
 
-<label for="nombre">Paciente:</label>
-<select id="nombre" required>
-  <option value="">Selecciona un paciente</option>
-</select>
-
+    <label for="nombre">Paciente:</label>
+    <select id="nombre" required>
+      <option value="">Selecciona un paciente</option>
+    </select>
 
     <label for="telefono">Teléfono (opcional):</label>
     <input type="text" id="telefono" />
@@ -87,23 +86,17 @@
 <!-- Sección de citas realizadas -->
 <section id="completed-section">
   <h2 style="text-align: center;">Citas Realizadas</h2>
-  <div id="completed-appointments">
-    <!-- Aquí se mostrarán -->
-  </div>
+  <div id="completed-appointments"></div>
 </section>
 
 <!-- Sección de reprogramación / cancelación -->
 <section id="reprogram-section">
   <h2 style="text-align: center;">Reprogramar o marcar asistencia</h2>
-  <div id="reprogram-appointments">
-    <!-- Aquí se agregarán botones como "No asistió", "Reprogramar", "Cancelar" -->
-  </div>
+  <div id="reprogram-appointments"></div>
 </section>
 
 <!-- Toast -->
 <div id="toast" class="toast hidden">✔ Acción realizada</div>
-
-
 
 <!-- Flatpickr JS -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -122,6 +115,7 @@
     time_24hr: true
   });
 </script>
+
 <!-- Botón flotante -->
 <button id="btnAgregarPaciente" class="floating-button">+</button>
 
@@ -136,8 +130,8 @@
     </form>
   </div>
 </div>
+
 <!-- Scripts -->
 <script src="script.js"></script>
-
 </body>
 </html>
