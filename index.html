@@ -2,136 +2,87 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agenda del Consultorio</title>
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Flatpickr CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
-
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore-compat.js"></script>
-
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDPqcugo5r3PmW38sMvL1OIQMj5kayUeSU",
-      authDomain: "agendaconsultorio-d6324.firebaseapp.com",
-      projectId: "agendaconsultorio-d6324",
-      storageBucket: "agendaconsultorio-d6324.firebasestorage.app",
-      messagingSenderId: "1064951207006",
-      appId: "1:1064951207006:web:32e4cd86e60ace92fe10cf"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agenda Consultorio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <header class="header">
+    <h1>Agenda Consultorio</h1>
+    <button id="ver-calendar" onclick="window.location.href='calendar.html'">🗓 Ver vista agrupada</button>
+  </header>
 
-<header>
-  <h1>Agenda del Consultorio</h1>
-</header>
+  <main class="container">
+    <section class="form-section">
+      <h2>Registrar Nueva Cita</h2>
+      <form id="appointment-form" class="form">
+        <div class="form-group">
+          <label for="doctora">Doctora</label>
+          <select id="doctora" required>
+            <option value="">Seleccione</option>
+            <option value="Esquivel">Dra. Esquivel</option>
+            <option value="Janampa">Dra. Janampa</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="nombre">Nombre del Paciente</label>
+          <input type="text" id="nombre" required />
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" />
+        </div>
+        <div class="form-group">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" required />
+        </div>
+        <div class="form-group">
+          <label for="hora">Hora</label>
+          <input type="time" id="hora" required />
+        </div>
+        <div class="form-group">
+          <label for="notas">Notas</label>
+          <textarea id="notas" rows="2" placeholder="Síntomas, observaciones..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Guardar Cita</button>
+      </form>
+    </section>
 
-<section class="agenda-buttons">
-  <button class="btn btn-dra-a doctor-toggle" data-doctor="Esquivel">Ver citas Dra. Esquivel</button>
-  <button class="btn btn-dra-b doctor-toggle" data-doctor="Janampa">Ver citas Dra. Janampa</button>
-  <a href="agenda.html" class="btn" style="background: linear-gradient(to right, #4caf50, #81c784); text-decoration: none;">Ver agenda agrupada</a>
-  <a href="pacientes.html" class="btn" style="background: #607d8b;">Ver pacientes</a>
-</section>
+    <section class="citas-section">
+      <h2>Citas Pendientes</h2>
+      <div id="appointments-list" class="citas-list"></div>
 
-<!-- Sección de calendario -->
-<section id="calendar-section">
-  <div id="calendar-container">
-    <!-- Aquí se mostrará el calendario dinámico -->
-  </div>
-</section>
+      <h2 style="margin-top: 2rem;">Historial</h2>
+      <div id="citas-historico" class="citas-list historico"></div>
+    </section>
+  </main>
 
-<!-- Sección de formulario -->
-<section id="form-section">
-  <h2>Registrar nueva cita</h2>
-  <form id="appointment-form">
-    <label for="doctor">Doctora:</label>
-    <select id="doctor" required>
-      <option value="Esquivel">Dra. Esquivel</option>
-      <option value="Janampa">Dra. Janampa</option>
-    </select>
-
-    <label for="patient-selector">Seleccionar paciente:</label>
-    <select id="patient-selector">
-      <option value="">-- Nuevo paciente --</option>
-    </select>
-
-    <label for="nombre">Paciente:</label>
-    <select id="nombre" required>
-      <option value="">Selecciona un paciente</option>
-    </select>
-
-    <label for="telefono">Teléfono (opcional):</label>
-    <input type="text" id="telefono" />
-
-    <label for="date">Fecha:</label>
-    <input type="date" id="date" required />
-
-    <label for="time">Hora:</label>
-    <input type="time" id="time" required />
-
-    <label for="notes">Notas:</label>
-    <textarea id="notes" rows="3"></textarea>
-
-    <button type="submit">Guardar cita</button>
-  </form>
-</section>
-
-<!-- Sección de citas realizadas -->
-<section id="completed-section">
-  <h2 style="text-align: center;">Citas Realizadas</h2>
-  <div id="completed-appointments"></div>
-</section>
-
-<!-- Sección de reprogramación / cancelación -->
-<section id="reprogram-section">
-  <h2 style="text-align: center;">Reprogramar o marcar asistencia</h2>
-  <div id="reprogram-appointments"></div>
-</section>
-
-<!-- Toast -->
-<div id="toast" class="toast hidden">✔ Acción realizada</div>
-
-<!-- Flatpickr JS -->
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
-<script>
-  flatpickr("#date", {
-    locale: "es",
-    altInput: true,
-    altFormat: "d/m/Y",
-    dateFormat: "Y-m-d",
-  });
-  flatpickr("#time", {
-    enableTime: true,
-    noCalendar: true,
-    dateFormat: "H:i",
-    time_24hr: true
-  });
-</script>
-
-<!-- Botón flotante -->
-<button id="btnAgregarPaciente" class="floating-button">+</button>
-
-<!-- Modal para agregar paciente -->
-<div id="modalAgregarPaciente" class="modal hidden">
+  <footer class="footer">
+    <p>&copy; 2025 Agenda Consultorio</p>
+  </footer>
+<!-- Modal Reprogramar -->
+<div id="modal-reprogramar" class="modal hidden">
   <div class="modal-content">
-    <h3>Agregar nuevo paciente</h3>
-    <form id="formAgregarPaciente">
-      <input type="text" id="nombrePaciente" placeholder="Nombre completo" required />
-      <textarea id="notasPaciente" placeholder="Notas iniciales del tratamiento" rows="4"></textarea>
-      <button type="submit" class="btn guardar-btn">Guardar paciente</button>
+    <h2>Reprogramar Cita</h2>
+    <form id="form-reprogramar">
+      <input type="hidden" id="reprogramar-id" />
+      <div class="form-group">
+        <label for="reprogramar-fecha">Nueva Fecha</label>
+        <input type="date" id="reprogramar-fecha" required />
+      </div>
+      <div class="form-group">
+        <label for="reprogramar-hora">Nueva Hora</label>
+        <input type="time" id="reprogramar-hora" required />
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="btn-primary">Guardar</button>
+        <button type="button" id="cerrar-modal" class="btn-cancel">Cancelar</button>
+      </div>
     </form>
   </div>
 </div>
 
-<!-- Scripts -->
-<script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vista de Calendario - Citas</title>
+  <link rel="stylesheet" href="calendar.css">
+
+  <!-- FullCalendar CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
+
+  <!-- Estilos adicionales modernos -->
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f4f6fb;
+    }
+
+    header {
+      background: linear-gradient(to right, #5f2c82, #49a09d);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0 0 0.5rem;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .buttons button,
+    .btn-volver {
+      padding: 0.6rem 1rem;
+      background: white;
+      color: #333;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .buttons button:hover,
+    .btn-volver:hover {
+      background: #e0e0e0;
+      transform: scale(1.03);
+    }
+
+    #filtroDoctora {
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    main {
+      padding: 1rem;
+    }
+
+    #calendar-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Agenda de Citas</h1>
+    <div class="controls">
+      <div class="buttons">
+        <button onclick="cambiarVista('timeGridWeek')">Vista semanal</button>
+        <button onclick="cambiarVista('timeGridDay')">Vista por día</button>
+        <a href="index.html" class="btn-volver">← Volver</a>
+      </div>
+      <select id="filtroDoctora" onchange="cargarCitas()">
+        <option value="todas">Todas las doctoras</option>
+        <option value="Esquivel">Dra. Esquivel</option>
+        <option value="Janampa">Dra. Janampa</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <div id="calendar-container">
+      <div id="calendar"></div>
+    </div>
+  </main>
+
+  <script type="module" src="calendar.js"></script>
+</body>
+</html>
+

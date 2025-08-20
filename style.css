@@ -1,0 +1,225 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f3fc;
+  color: #333;
+  padding: 1rem;
+}
+
+.header {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.esquivel-btn {
+  background-color: #f78da7;
+}
+
+.janampa-btn {
+  background-color: #9f8ce5;
+}
+
+.grouped-btn {
+  background-color: #6bd08c;
+}
+
+.form-section,
+.historial-section,
+.appointments-section {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+form label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.guardar-btn {
+  margin-top: 1.5rem;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+}
+
+.appointment-card {
+  border-left: 6px solid #ccc;
+  background: #f9f9f9;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.appointment-card.esquivel {
+  border-color: #f78da7;
+}
+
+.appointment-card.janampa {
+  border-color: #9f8ce5;
+}
+
+.appointment-card.cancelled {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+/* Modal base */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.btn-cancel {
+  background-color: #ccc;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* Modal base */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.btn-cancel {
+  background-color: #ccc;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.vista-agrupada-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.vista-agrupada-btn:hover {
+  background: linear-gradient(135deg, #8f94fb, #4e54c8);
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+.vista-agrupada-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.vista-agrupada-btn:hover {
+  background: linear-gradient(135deg, #8f94fb, #4e54c8);
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
