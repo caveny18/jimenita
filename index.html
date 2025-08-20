@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agenda Consultorio</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
+
 <body>
   <header class="header">
     <h1>Agenda Consultorio</h1>
@@ -61,28 +63,29 @@
   <footer class="footer">
     <p>&copy; 2025 Agenda Consultorio</p>
   </footer>
-<!-- Modal Reprogramar -->
-<div id="modal-reprogramar" class="modal hidden">
-  <div class="modal-content">
-    <h2>Reprogramar Cita</h2>
-    <form id="form-reprogramar">
-      <input type="hidden" id="reprogramar-id" />
-      <div class="form-group">
-        <label for="reprogramar-fecha">Nueva Fecha</label>
-        <input type="date" id="reprogramar-fecha" required />
-      </div>
-      <div class="form-group">
-        <label for="reprogramar-hora">Nueva Hora</label>
-        <input type="time" id="reprogramar-hora" required />
-      </div>
-      <div class="modal-actions">
-        <button type="submit" class="btn-primary">Guardar</button>
-        <button type="button" id="cerrar-modal" class="btn-cancel">Cancelar</button>
-      </div>
-    </form>
+  <!-- Modal Reprogramar -->
+  <div id="modal-reprogramar" class="modal hidden">
+    <div class="modal-content">
+      <h2>Reprogramar Cita</h2>
+      <form id="form-reprogramar">
+        <input type="hidden" id="reprogramar-id" />
+        <div class="form-group">
+          <label for="reprogramar-fecha">Nueva Fecha</label>
+          <input type="date" id="reprogramar-fecha" required />
+        </div>
+        <div class="form-group">
+          <label for="reprogramar-hora">Nueva Hora</label>
+          <input type="time" id="reprogramar-hora" required />
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary">Guardar</button>
+          <button type="button" id="cerrar-modal" class="btn-cancel">Cancelar</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 
   <script type="module" src="script.js"></script>
 </body>
+
 </html>
